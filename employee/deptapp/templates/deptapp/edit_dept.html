@@ -1,0 +1,40 @@
+{% extends 'deptapp/base.html' %}
+{% block title %} Update Department {% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Update Department</h3>
+                        <form   action="{% url 'deptapp:edit_dept' dept.id %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Department Name:</label>
+                                    <div class="col-sm-4">
+                                    <input type="text" name="deptname" id="deptname" required maxlength="20" value="{{ dept.deptname }}"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Department Logo:</label>
+                                    <div class="col-sm-4">
+                                    <input type="File" name="dept_logo" id="dept_logo" required maxlength="20" value="{{ dept.dept_logo }}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label"></label>
+                                <div class="col-sm-1">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="button" class="btn btn-primary" value="Cancel" onclick="location.href = '{% url 'deptapp:home' %}';">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

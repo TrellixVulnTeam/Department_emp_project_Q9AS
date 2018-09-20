@@ -1,0 +1,64 @@
+{% extends 'deptapp/base.html' %}
+{% block title %} Department Detail {% endblock %}
+
+{% block body %}
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-sm-4 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h1> {{ dept.deptname }}</h1>
+                        <a href="{% url 'deptapp:detail_dept' dept.id %}">
+                            <img src="{{ dept.dept_logo.url }}" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                    <li role="presentation" class="active"><a href="{% url 'deptapp:detail_dept' dept.id %}" class="btn btn-primary">View All</a></li>
+                    <li role="presentation"><a href="{% url 'deptapp:add_emp' dept.id %}" class="btn btn-primary">Add Employee</a></li>
+                    <li role="presentation"><a href="{% url 'deptapp:home'  %}" class="btn btn-primary">Department Lists</a></li>
+                </ul>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3> All Employee</h3>
+                         {% if error_message %}
+                            <p><strong>{{ error_message }}</strong></p>
+                         {% endif %}
+                        <table class="table">
+                            <thread>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Employee Last Name</th>
+                                    <th>Employee Salary</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thread>
+                            <tbody>
+                            {% for emp in dept.employee_set.all %}
+                            <tr>
+                                <td>{{ emp.empname }}</td>
+                                <td>{{ emp.emplastname }}</td>
+                                <td>{{ emp.empsal }}</td>
+                                <td>
+                                    <form action="{% url 'deptapp:delete_emp' dept.id emp.id %}" method="POST" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="emp_id" value="{{ emp.id }}" />
+                                        <button type="submit" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-remove"></span>&nbsp; Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+{% endblock %}
+

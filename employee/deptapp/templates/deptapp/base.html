@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} Employee Management System{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-image: url('http://blog.hostbaby.com/wp-content/uploads/2014/03/PaintSquares_1400x900.jpg') ; ">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <p class="navbar-brand">Employee Management System</p>
+    </div>
+
+     <ul class="nav navbar-nav navbar-right">
+         <li class="">
+            <a href="{% url 'deptapp:adddept' %}">
+                <span class='glyphicon glyphicon-plus' aria-hidden="true"></span>&nbsp; Add Department
+            </a>
+        </li>
+         <li class="">
+            <a href="{% url 'deptapp:logout' %}">
+                 <span class="glyphicon glyphicon-log-out"></span> Logout
+            </a>
+        </li>
+     </ul>
+
+  </div>
+</nav>
+
+{% block body %}
+
+{% endblock %}
+
+</body>
+</html>
