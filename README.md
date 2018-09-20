@@ -24,5 +24,22 @@ Overview:
   - Activate the virtual Environment (env\Scripts\activate )
   - Run the django project ( python manage.py runserver )
 
-   
+  
+ <h3>Login </h3>
+<img src="images/logind.PNG" >
+
+<h3> List of Departments </h3>
+<img src="images/detail.PNG">
+
+<h3> List of Employees under each departments </h3>
+<img src="images/deptdetail.PNG">
+
+<h3> Add Department </h3>
+<img src="images/adddept.PNG">
+
+<h3> Update Department</h3>
+<img src="images/update_dept.PNG">
+
+<h3> Add Employee </h3>
+<img src="images/addemployee.PNG">
   
